@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, initial-scale=1.0">
+    <title>Debuggers - Vitor Rodrigues</title>
+    <script src="calculadora.js"></script>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div>
+        <section>
+            <header>Calculadora - Soma de inteiros</header>
+            <content>
+                <p>Digite os números</p>
+                <div class="area_dados"><input type="text" name="num1" id="num1" type="number" inputmode="numeric"> + <input type="text" name="num2" id="num2" type="number" inputmode="numeric"> <span id="resultado"></span></div>
+                <div class="area_botoes"><input type="button" value="Calcular" onclick="fazerCalculo()"></div>
+            </content>
+        </section>
+
+        <section>
+            <header>Formulário de cadastro</header>
+            <content>
+                <form method="GET" onsubmit="return enviarDados()" name="cadastro">
+                    <div>
+                        <label for="nome">Nome</label>
+                        <input type="text" name="nome" id="nome" placeholder="Nome completo" required>
+                    </div>
+                    <div>
+                        <label for="nascimento">Data Nascimento</label>
+                        <input type="date" name="nascimento" id="nascimento" required>
+                        <p class="texto_advertencia">Você deve ter 18 anos completos para se cadastrar</p>
+                    </div>
+                    <div>
+                        <input type="submit" value="Enviar">
+                    </div>
+                </form>
+            </content>
+        </section>
+    </div>
+</body>
+
+<script>
+    // Códigos da página
+    function fazerCalculo() {
+        let texto1 = document.getElementById("num1").value
+        let texto2 = document.getElementById("num2").value
+
+        let x = parseInt(texto1)
+        let y = parseInt(texto2)
+        
+        if (isNaN(x) || isNaN(y)) {
+            document.getElementById("resultado").innerHTML = "Digite apenas números para somar"
+            return
+        }
+
+        let resultado = Calculadora.soma(x, y)
+        document.getElementById("resultado").innerHTML = "= " + resultado
+    }
+
+    function enviarDados() {
+        let nome = document.forms["cadastro"]["nome"].value
+        let dataNascimento = new Date(document.forms["cadastro"]["nascimento"].value)
+
+        if (dataNascimento.getYear() >= (new Date()).getYear()-18) {
+            alert("Para se cadastrar precisa ter pelo menos 18 anos completos")
+            return  false
+        }
+
+        if (nome.split(" ").length < 2) {
+            alert("Digite nome e sobrenome")
+            return false
+        }
+
+        window.alert("Dados enviados com suceesso!")
+        return false
+    }
+
+    // Executa a função quando a página terminar de carregar
+    window.onload = function() {
+        // Coloca foco no elemento da calculadora
+        document.getElementById("num1").focus()
+    }
+</script>
+</html>

@@ -1,0 +1,48 @@
+* { margin: 0; padding: 0; }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+body > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    padding: 60pt;
+}
+
+/* conteúdo dos widgets */
+section {
+    border: 1px dotted gray;
+    margin-bottom: 16pt;
+    padding: 24pt;
+}
+
+header {
+    font-size: 1.2em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    color: darkblue;  
+    margin-bottom: 8pt;
+}
+
+input {
+    padding: 4pt;
+}
+
+form>div {
+    margin: 8pt auto;
+}
+
+.area_dados>input {
+    max-width: 80px;
+}
+
+.area_botoes {
+    margin-top: 4pt;
+
+}
+
+.texto_advertencia {
+    font-size: 0.8em;
+    color:rgb(161, 49, 49);
+}
